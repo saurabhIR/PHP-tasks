@@ -6,6 +6,7 @@ session_start();
 // checks if session user is set if not then redirect
 if (!isset($_SESSION["username"])) {
     header("Location:./index.php?message=please_login_first");
+    exit;
 }
 
 // if someone clicks on logout unset the session
