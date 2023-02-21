@@ -14,10 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     header('Location: links.php');
     exit;
   } else {
-    $error = 'Invalid username or password';
+    echo 'Invalid username or password';
   }
-  if (isset($error)) { ?>
-    <div><?php echo $error; ?></div>
-  <?php }
 }
 ?>
