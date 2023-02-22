@@ -16,7 +16,7 @@
     //created a function for first and last name that will check whether name is alphabetical or not.
     function greet(){
         // checking input is in alphabetical pattern or not
-        if (ctype_alpha($this->fname) && ctype_alpha($this->fname)) {
+        if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
           echo "Hello " . $this->fullname . "<br>";
         }
         else {
