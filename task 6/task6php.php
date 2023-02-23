@@ -1,8 +1,45 @@
 <?php
   class person{
-    // created global variables
-    public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub,$phone,$email;
-    // created a constructor
+    
+    /** @var string $fname The student's first name. */
+    public $fname;
+
+    /** @var string $lname The student's last name. */
+    public $lname;
+
+    /** @var string $fullname The student's full name. */
+    public $fullname;
+
+    /** @var string $img The name of the student's image. */
+    public $file_name;
+
+    /** @var string $img_temp The temporary path of the student's image. */
+    public $file_tmp_name;
+
+    /** @var string $marks The student's marks. */
+    public $subjects;
+    /** @var array $marks The student's marks. */
+    public $subject;
+    /** @var array $marks The student's marks. */
+    public $sub;
+    /** @var string $phone The student's phone number. */
+    public $phone;
+     /**
+     * @var string The student's email address.
+     */
+    public $email;
+
+      /**
+     * Constructor to initalize the form object
+     *
+     * @param string $fname
+     * @param string $lname
+     * @param string $file_name
+     * @param string $file_tmp_name
+     * @param int    $phone
+     * @param string $email
+     * @return void
+      */
     function __construct($first,$last,$file_name,$file_tmp_name,$subjectMarks,$phone,$email){
         $this->fname = $first;
         $this->lname = $last;
@@ -13,17 +50,23 @@
         $this->phone=$phone;
         $this->email=$email;
     }
-    //created a function for first and last name that will check whether name is alphabetical or not.
+    /**
+    * Outputs a message containing the full name of the student, or an error message if the first or last name is invalid.
+    */
     function greet(){
         // checking input is in alphabetical pattern or not
-        if (ctype_alpha($this->fname) && ctype_alpha($this->fname)) {
+        if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
           echo "Hello " . $this->fullname . "<br>";
         }
         else {
           echo "Error: First name and last name must contain only alphabetical characters.";
         }
     }
-    // created a function for storing image and displaying it.
+    /**
+     * Outputs a message related to the student's image file and moves the file to a specified directory.
+     *
+     * @return void
+     */
     function image(){
       if (isset($_FILES["photo"])) {
         //storing image in images folder
@@ -33,22 +76,27 @@
       }
 
     }
-    // created a function for accepting subjects and marks of different subjects.
+    /**
+    * Displays a table of the student's marks.
+    * @return void
+    */
     function textarea(){
         // creating a array that will split the text by checking nect line
-        $this->subjects = explode("\n",$this->subjects);
-        if(isset($this->subjects)) {
+        $subjectandmarks= explode("\n",$this->subjects);
+        if(isset($subjectandmarks)) {
         echo "<table border='1'>";
         echo "<tr><th>Subject</th><th>Marks</th></tr>";
         // now for each element in subjects array we are splitting element by "|" and displaying it
-        foreach($this->subjects as $this->subject) {
+        foreach($subjectandmarks as $this->subject) {
             $this->sub = explode("|", $this->subject);
             echo "<tr><td>" . $this->sub[0] . "</td><td>" . $this->sub[1] . "</td></tr>";
         }
         echo "</table>";
         }
     }
-    // created a function to accept the phone number from the user and checking whether its in correct format or not.
+    /**
+     * Method to display the contact number of the student
+    */
     function validating_phone() {
       // checking the pattern of phone number with pregamatch with prefix of "+91" and printing it.
       if (preg_match("/^\+91[1-9]\d{9}$/", $this->phone)) {
@@ -59,7 +107,9 @@
           echo "<br>";
       }
     }
-    // function for validating email
+    /**
+     * Validates the email of the student using an external API.
+     */
     function emailvalidation(){
     // taken the email api live server code
     $curl = curl_init();
@@ -91,7 +141,11 @@
         echo "Email is not valid: ".$this->email;
     }
   }
-  //created a function that'll make a doc file which'll save the details of the person and download it in user machine.
+    /**
+   * Generates and downloads a file with given user information and marks.
+   *
+   * @return void
+   */
   function download_form(){
         $server_file = "./uploads/$this->fullname.txt";
         $server_content = "Response\n";
