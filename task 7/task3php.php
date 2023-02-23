@@ -1,52 +1,60 @@
 <?php
   class person{
-        // created global variables
-        public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub,$phone;
-        // created a constructor
-        function __construct($first,$last,$file_name,$file_tmp_name,$subjectMarks,$phone){
-            $this->fname = $first;
-            $this->lname = $last;
-            $this->fullname = $this->fname .' '. $this->lname;
-            $this->file_name = $file_name;
-            $this->file_tmp_name = $file_tmp_name;
-            $this->subjects = $subjectMarks;
-            $this->phone=$phone;
+    // created global variables
+    public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub;
+      /**
+     * Constructor to initalize the form object
+     *
+     * @param string $fname
+     * @param string $lname
+     * @param string $file_name
+     * @param string $file_tmp_name
+     * @param string $subjectMarks
+     * @return void
+      */
+    function __construct($first,$last,$file_name,$file_tmp_name,$subjectMarks){
+        $this->fname = $first;
+        $this->lname = $last;
+        $this->fullname = $this->fname .' '. $this->lname;
+        $this->file_name = $file_name;
+        $this->file_tmp_name = $file_tmp_name;
+        $this->subjects = $subjectMarks;
+    }
+    //created a function for first and last name that will check whether name is alphabetical or not.
+    function greet(){
+        // checking input is in alphabetical pattern or not
+        if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
+          echo "Hello " . $this->fullname . "<br>";
         }
-        //created a function for first and last name that will check whether name is alphabetical or not.
-        function greet(){
-            // checking input is in alphabetical pattern or not
-            if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
-              echo "Hello " . $this->fullname . "<br>";
-            }
-            else {
-              echo "Error: First name and last name must contain only alphabetical characters.";
-            }
+        else {
+          echo "Error: First name and last name must contain only alphabetical characters.";
         }
-        // created a function for storing image and displaying it.
-        function image(){
-          if (isset($_FILES["photo"])) {
-            //storing image in images folder
-            move_uploaded_file($this->file_tmp_name, "images/".$this->file_name);
-            // displaying image from the images folder
-            echo "<img src='./images/$this->file_name'>";
-          }
+    }
+    // created a function for storing image and displaying it.
+    function image(){
+      if (isset($_FILES["photo"])) {
+        //storing image in images folder
+        move_uploaded_file($this->file_tmp_name, "images/".$this->file_name);
+        // displaying image from the images folder
+        echo "<img src='./images/$this->file_name'>";
+      }
 
+    }
+    // created a function for accepting subjects and marks of different subjects.
+    function textarea(){
+        // creating a array that will split the text by checking nect line
+        $this->subjects = explode("\n",$this->subjects);
+        if(isset($this->subjects)) {
+        echo "<table border='1'>";
+        echo "<tr><th>Subject</th><th>Marks</th></tr>";
+        // now for each element in subjects array we are splitting element by "|" and displaying it
+        foreach($this->subjects as $this->subject) {
+            $this->sub = explode("|", $this->subject);
+            echo "<tr><td>" . $this->sub[0] . "</td><td>" . $this->sub[1] . "</td></tr>";
         }
-        // created a function for accepting subjects and marks of different subjects.
-        function textarea(){
-            // creating a array that will split the text by checking nect line
-            $this->subjects = explode("\n",$this->subjects);
-            if(isset($this->subjects)) {
-            echo "<table border='1'>";
-            echo "<tr><th>Subject</th><th>Marks</th></tr>";
-            // now for each element in subjects array we are splitting element by "|" and displaying it
-            foreach($this->subjects as $this->subject) {
-                $this->sub = explode("|", $this->subject);
-                echo "<tr><td>" . $this->sub[0] . "</td><td>" . $this->sub[1] . "</td></tr>";
-            }
-            echo "</table>";
-            }
+        echo "</table>";
         }
+    }
 }
 //taking values from form.
 if(isset($_POST['firstName']) && isset($_POST['lastName'])){
@@ -55,9 +63,8 @@ if(isset($_POST['firstName']) && isset($_POST['lastName'])){
   $file_name=$_FILES['photo']['name'];
   $file_tmp_name=$_FILES['photo']['tmp_name'];
   $subjectMarks=$_POST['subjectMarks'];
-  $phone=$_POST['phone'];
   //creating a new object
-  $person1 = new person($fname,$lname,$file_name,$file_tmp_name,$subjectMarks,$phone);
+  $person1 = new person($fname,$lname,$file_name,$file_tmp_name,$subjectMarks);
   //using greet function form person class to check and display first name and last name.
   $person1->greet();
   //checking whether photo is uploaded or not. if uploaded then using image function to displaying it.

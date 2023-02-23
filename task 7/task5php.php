@@ -2,7 +2,18 @@
   class person{
     // created global variables
     public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub,$phone,$email;
-    // created a constructor
+      /**
+     * Constructor to initalize the form object
+     *
+     * @param string $fname
+     * @param string $lname
+     * @param string $file_name
+     * @param string $file_tmp_name
+     * @param string $subjectMarks
+     * @param int    $phone
+     * @param string $email
+     * @return void
+      */
     function __construct($first,$last,$file_name,$file_tmp_name,$subjectMarks,$phone,$email){
         $this->fname = $first;
         $this->lname = $last;
@@ -91,8 +102,6 @@
         echo "Email is not valid: ".$this->email;
     }
   }
-  
-
 }
 //taking values from form.
 if(isset($_POST['firstName']) && isset($_POST['lastName'])){

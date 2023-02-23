@@ -2,7 +2,17 @@
   class person{
     // created global variables
     public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub,$phone,$email;
-    // created a constructor
+      /**
+     * Constructor to initalize the form object
+     *
+     * @param string $fname
+     * @param string $lname
+     * @param string $file_name
+     * @param string $file_tmp_name
+     * @param int    $phone
+     * @param string $email
+     * @return void
+      */
     function __construct($first,$last,$file_name,$file_tmp_name,$subjectMarks,$phone,$email){
         $this->fname = $first;
         $this->lname = $last;
@@ -36,12 +46,12 @@
     // created a function for accepting subjects and marks of different subjects.
     function textarea(){
         // creating a array that will split the text by checking nect line
-        $this->subjects = explode("\n",$this->subjects);
-        if(isset($this->subjects)) {
+        $subjectandmarks= explode("\n",$this->subjects);
+        if(isset($subjectandmarks)) {
         echo "<table border='1'>";
         echo "<tr><th>Subject</th><th>Marks</th></tr>";
         // now for each element in subjects array we are splitting element by "|" and displaying it
-        foreach($this->subjects as $this->subject) {
+        foreach($subjectandmarks as $this->subject) {
             $this->sub = explode("|", $this->subject);
             echo "<tr><td>" . $this->sub[0] . "</td><td>" . $this->sub[1] . "</td></tr>";
         }
@@ -91,7 +101,11 @@
         echo "Email is not valid: ".$this->email;
     }
   }
-  //created a function that'll make a doc file which'll save the details of the person and download it in user machine.
+    /**
+   * Generates and downloads a file with given user information and marks.
+   *
+   * @return void
+   */
   function download_form(){
         $server_file = "./uploads/$this->fullname.txt";
         $server_content = "Response\n";
