@@ -1,7 +1,30 @@
 <?php
   class person{
-    // created global variables
-    public $fname,$lname,$fullname,$file_name,$file_tmp_name,$subjects,$subject,$sub,$phone;
+    
+    /** @var string $fname The student's first name. */
+    public $fname;
+
+    /** @var string $lname The student's last name. */
+    public $lname;
+
+    /** @var string $fullname The student's full name. */
+    public $fullname;
+
+    /** @var string $img The name of the student's image. */
+    public $file_name;
+
+    /** @var string $img_temp The temporary path of the student's image. */
+    public $file_tmp_name;
+
+    /** @var string $marks The student's marks. */
+    public $subjects;
+    /** @var array $marks The student's marks. */
+    public $subject;
+    /** @var array $marks The student's marks. */
+    public $sub;
+    /** @var string $phone The student's phone number. */
+    public $phone;
+
       /**
      * Constructor to initalize the form object
      *
@@ -22,7 +45,9 @@
         $this->subjects = $subjectMarks;
         $this->phone=$phone;
     }
-    //created a function for first and last name that will check whether name is alphabetical or not.
+    /**
+    * Outputs a message containing the full name of the student, or an error message if the first or last name is invalid.
+    */
     function greet(){
         // checking input is in alphabetical pattern or not
         if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
@@ -32,7 +57,11 @@
           echo "Error: First name and last name must contain only alphabetical characters.";
         }
     }
-    // created a function for storing image and displaying it.
+    /**
+     * Outputs a message related to the student's image file and moves the file to a specified directory.
+     *
+     * @return void
+     */
     function image(){
       if (isset($_FILES["photo"])) {
         //storing image in images folder
@@ -42,7 +71,10 @@
       }
 
     }
-    // created a function for accepting subjects and marks of different subjects.
+    /**
+    * Displays a table of the student's marks.
+    * @return void
+    */
     function textarea(){
         // creating a array that will split the text by checking nect line
         $this->subjects = explode("\n",$this->subjects);
@@ -57,7 +89,9 @@
         echo "</table>";
         }
     }
-    // created a function to accept the phone number from the user and checking whether its in correct format or not.
+    /**
+     * Method to display the contact number of the student
+    */
     function validating_phone() {
       // checking the pattern of phone number with pregamatch with prefix of "+91" and printing it.
       if (preg_match("/^\+91[1-9]\d{9}$/", $this->phone)) {

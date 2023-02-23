@@ -1,7 +1,43 @@
 <?php
+  /**
+   * Defines a class to represent the form.
+   */
   class person{
-      // created global variables
-      public $fname,$lname,$fullname,$file_name,$file_tmp_name;
+
+      /**
+       * The student's first name.
+       *
+       * @var string
+       */
+      public $fname;
+
+      /**
+       * The student's last name.
+       *
+       * @var string
+       */
+      public $lname;
+
+      /**
+       * The student's full name.
+       *
+       * @var string
+       */
+      public $fullname;
+      /**
+       * The name of the student's image file.
+       *
+       * @var string
+       */
+      public $file_name;
+
+      /**
+       * The temporary location of the student's image file.
+       *
+       * @var string
+       */
+      public $file_tmp_name;
+      
         /**
        * Constructor to initalize the form object
        *
@@ -19,7 +55,9 @@
           $this->file_name = $file_name;
           $this->file_tmp_name = $file_tmp_name;
       }
-      //created a function for first and last name that will check whether name is alphabetical or not.
+      /**
+      * Outputs a message containing the full name of the student, or an error message if the first or last name is invalid.
+      */
       function greet(){
         // checking input is in alphabetical pattern or not
         if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
@@ -29,7 +67,11 @@
           echo "Error: First name and last name must contain only alphabetical characters.";
         }
     }
-    // created a function for storing image and displaying it.
+    /**
+     * Outputs a message related to the student's image file and moves the file to a specified directory.
+     *
+     * @return void
+     */
     function image(){
       if (isset($_FILES["photo"])) {
         //storing image in images folder

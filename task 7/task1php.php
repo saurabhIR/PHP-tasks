@@ -3,8 +3,21 @@
    * Defines a class to represent the form.
    */
   class person{
-    // created global variables
-    public $fname,$lname,$fullname;
+    
+    /**
+     * @var string $fname The first name of the student.
+     */
+    public $fname;
+
+    /**
+     * @var string $lname The last name of the student.
+     */
+    public $lname;
+
+    /**
+     * @var string $fullname The full name of the student, consisting of the first and last names.
+     */
+    public $fullname;
     /**
 		 * Constructor to initalize the form object
 		 *
@@ -18,7 +31,9 @@
         $this->lname = $last;
         $this->fullname = $this->fname .' '. $this->lname;
     }
-    //created a function for first and last name that will check whether name is alphabetical or not.
+    /**
+    * Outputs a message containing the full name of the student, or an error message if the first or last name is invalid.
+    */
     function greet(){
         // checking input is in alphabetical pattern or not
         if (ctype_alpha($this->fname) && ctype_alpha($this->lname)) {
