@@ -1,0 +1,12 @@
+/* styling for form and output for proper gap */
+form , .php{  
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 5px; 
+    padding: 10px;
+ }
+ /* styling for output image*/
+img{
+    width: 50%;
+}
