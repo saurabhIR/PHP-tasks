@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Task 2</title>
   <!-- linking external files(css and js file) -->
-  <script src="./task1js.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
   <body>
@@ -19,9 +18,11 @@
       <label for="fullName">Full name:</label><br>
       <input type="text" id="fullName" name="fullName" disabled><br>
       <label for="file">Image:</label><br>
-      <input type="file" name="photo"><br>
+      <input type="file" name="photo" accept=".jpg,.jpeg,.png"><br>
       <input type="submit" value="Submit">
     </form>
+
+    <script src="./task2js.js"></script>
     <!-- linking php file to show action of the form -->
     <div class="php">
       <?php include './task2php.php'; ?>

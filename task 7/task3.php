@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Task 3</title>
     <!-- linking external files(css and js file) -->
-  <script src="./task1js.js"></script>
+  
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -20,15 +20,16 @@
       <label for="fullName">Full name:</label><br>
       <input type="text" id="fullName" name="fullName" disabled><br>
       <label for="file">Image:</label><br>
-      <input type="file" name="photo"><br>
+      <input type="file" name="photo" accept=".jpg,.jpeg,.png"><br>
       <label for="subjectMarks">Subject Marks:</label>
-			<textarea name="subjectMarks" required></textarea>
+			<textarea name="subjectMarks" id="subjectMarks" required></textarea>
 			<p>Enter subject marks in the format 'Subject|Marks' in each line</p>
       <input type="submit" value="Submit">
     </form>
-    <!-- linking php file to show action of the form -->
+    <script src="./task3js.js"></script>
     <div class="php">
       <?php include './task3php.php'; ?>
     </div>
-  </body>
+  
+</body>
 </html>

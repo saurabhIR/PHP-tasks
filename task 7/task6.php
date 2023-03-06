@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Task 6</title>
   <!-- linking external files(css and js file) -->
-  <script src="./task1js.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
   <body>
@@ -19,16 +18,17 @@
     <label for="fullName">Full name:</label><br>
     <input type="text" id="fullName" name="fullName" disabled><br>
     <label for="file">Image:</label><br>
-    <input type="file" name="photo"><br>
+    <input type="file" name="photo" accept=".jpg,.jpeg,.png"><br>
     <label for="subjectMarks">Subject Marks:</label>
-	<textarea name="subjectMarks" required></textarea>
-	<p>Enter subject marks in the format 'Subject|Marks' in each line</p>
+	  <textarea name="subjectMarks" id="subjectMarks" required></textarea>
+	  <p>Enter subject marks in the format 'Subject|Marks' in each line</p>
     <input type="text" id="phone" name="phone" value="+91"><br>
     <p>Enter a valid Indian phone number starting with +91 and having 10 digits</p>
     <label for="email">Email:</label>
     <input type="text" id="email" name="email" required>
     <input type="submit" value="Submit">
     </form>
+    <script src="./task6js.js"></script>
     <!-- linking php file to show action of the form -->
 
   </body>

@@ -2,9 +2,12 @@
 form , .php{  
     display: flex;
     flex-direction: column;
-    align-items: baseline;
-    gap: 5px; 
+    align-items: flex-start;
+    gap: 5px;
     padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+    width: 45%;
  }
  /* styling for output image*/
 img{
@@ -12,4 +15,14 @@ img{
 }
 .php{
     gap: 10px;
+    margin-top: 0;
+    width: 45%;
+    padding: 10px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #4CAF50;
+    flex-direction: column;
+    align-items: center;
 }

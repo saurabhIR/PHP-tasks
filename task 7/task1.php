@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP Task 1</title>
   <!-- linking external files(css and js file) -->
-  <script src="./task1js.js"></script>
+
   <link rel="stylesheet" href="./style.css">
 </head>
   <body>
@@ -19,10 +19,12 @@
       <label for="fullName">Full name:</label><br>
       <input type="text" id="fullName" name="fullName" disabled><br><br>
       <input type="submit" value="Submit">
-    </form>
+    </form> 
+    <script src="task1js.js"></script>
     <!-- linking php file to show action of the form -->
     <div class="php">
       <?php include './task1php.php'; ?>
-    </div>  
+    </div>
+    
   </body>
 </html>

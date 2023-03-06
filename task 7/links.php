@@ -10,34 +10,39 @@ if (!isset($_SESSION["username"])) {
 }
 
 // if someone clicks on logout unset the session
-if (isset($_POST["logout"])) {
-    session_unset();
-    session_destroy();
-    header("Location:./index.php");
-}
-
+// if (isset($_POST["logout"])) {
+//     session_unset();
+//     session_destroy();
+//     header("Location:./index.php");
+// }
 
 // if someone does a get query like welcome.php?q=4 then redirect to correct url
 if (isset($_GET["q"])) {
     $q = $_GET["q"];
     switch ($_GET["q"]) {
         case "1":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task1.php";
             break;
         case "2":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task2.php";
             break;
         case "3":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task3.php";
             break;
         case "4":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task4.php";
             break;
         case "5":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task5.php";
             break;
         case "6":
-            header('Location:task'.$q.'.php');
+            // header('Location:task'.$q.'.php');
+            include_once "task6.php";
             break;
         default:
             echo "Wrong url <br>";
@@ -49,6 +54,7 @@ if (isset($_GET["q"])) {
 <head>
   <title>Pager</title>
   <link rel="stylesheet" href="./login-style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>Tasks</h1>
@@ -62,8 +68,6 @@ if (isset($_GET["q"])) {
         <li><a href="links.php?q=6">Task 6</a></li>
         </ul>
     </nav>
-    <form action="index.php" method="post">
-        <button type="submit" name="logout" class="logout">Log Out</button>
-    </form>
+    <button type="submit" name="logout" class="logout"><a href="./logout.php">Logout</a></button>
 </body>
 </html>
